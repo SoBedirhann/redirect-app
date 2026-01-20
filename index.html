@@ -3,75 +3,93 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verde - İndir</title>
+    <meta name="description" content="Verde uygulamasını indirin">
+    <meta http-equiv="refresh" content="0;url=https://apps.apple.com/tr/app/verde/id6751551270?l=tr">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>Uygulamayı İndir</title>
-    <meta name="description" content="Uygulamayı iOS veya Android cihazınıza indirin.">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #111;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="Uygulamayı İndir">
-    <meta property="og:description" content="Uygulamayı hemen indirin">
-    <meta property="og:type" content="website">
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #333;
+            border-top-color: #fff;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 0.8s linear infinite;
+        }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-    <link rel="stylesheet" href="styles.css">
+        h1 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 24px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="background-effects">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-    </div>
-
     <div class="container">
-        <div class="card">
-            <!-- App Icon -->
-            <div class="app-icon-wrapper">
-                <div class="app-icon">
-                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="80" height="80" rx="18" fill="url(#iconGradient)" />
-                        <path d="M40 20L55 35L40 50L25 35L40 20Z" fill="white" fill-opacity="0.9" />
-                        <path d="M40 30L50 40L40 50L30 40L40 30Z" fill="white" />
-                        <circle cx="40" cy="55" r="8" fill="white" fill-opacity="0.8" />
-                        <defs>
-                            <linearGradient id="iconGradient" x1="0" y1="0" x2="80" y2="80">
-                                <stop stop-color="#667eea" />
-                                <stop offset="1" stop-color="#764ba2" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Redirect State -->
-            <div id="redirect-state" class="redirect-state">
-                <div class="spinner"></div>
-                <h1 class="title">Yönlendiriliyor...</h1>
-                <p class="subtitle" id="store-text">Uygulama mağazasına yönlendiriliyorsunuz</p>
-            </div>
-
-            <!-- Manual Buttons (fallback) -->
-            <div id="manual-buttons" class="manual-buttons hidden">
-                <p class="manual-text">Otomatik yönlendirme çalışmadı mı?</p>
-                <a href="#" id="store-button" class="store-button">
-                    <span id="button-icon" class="button-icon">📱</span>
-                    <span id="button-text">Mağazaya Git</span>
-                </a>
-            </div>
-        </div>
+        <div class="spinner"></div>
+        <h1>Yönlendiriliyor</h1>
+        <p id="msg">Uygulama mağazasına gidiliyor...</p>
+        <a id="btn" href="#">Mağazaya Git</a>
     </div>
+    <script>
+        var ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var appStore = 'https://apps.apple.com/tr/app/verde/id6751551270?l=tr';
+        var playStore = 'https://play.google.com/store/apps/details?id=com.cadde.verdeapp';
+        var url = ios ? appStore : playStore;
 
-    <script src="redirect.js"></script>
+        document.getElementById('btn').href = url;
+        document.getElementById('msg').textContent = ios ? "App Store'a gidiliyor..." : "Google Play'e gidiliyor...";
+
+        // Direkt yönlendir
+        window.location.replace(url);
+    </script>
 </body>
 
 </html>
