@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Uygulamayı İndir</title>
+    <meta name="description" content="Uygulamayı iOS veya Android cihazınıza indirin.">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Uygulamayı İndir">
+    <meta property="og:description" content="Uygulamayı hemen indirin">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <!-- App Icon -->
+            <div class="app-icon-wrapper">
+                <div class="app-icon">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="80" height="80" rx="18" fill="url(#iconGradient)" />
+                        <path d="M40 20L55 35L40 50L25 35L40 20Z" fill="white" fill-opacity="0.9" />
+                        <path d="M40 30L50 40L40 50L30 40L40 30Z" fill="white" />
+                        <circle cx="40" cy="55" r="8" fill="white" fill-opacity="0.8" />
+                        <defs>
+                            <linearGradient id="iconGradient" x1="0" y1="0" x2="80" y2="80">
+                                <stop stop-color="#667eea" />
+                                <stop offset="1" stop-color="#764ba2" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Redirect State -->
+            <div id="redirect-state" class="redirect-state">
+                <div class="spinner"></div>
+                <h1 class="title">Yönlendiriliyor...</h1>
+                <p class="subtitle" id="store-text">Uygulama mağazasına yönlendiriliyorsunuz</p>
+            </div>
+
+            <!-- Manual Buttons (fallback) -->
+            <div id="manual-buttons" class="manual-buttons hidden">
+                <p class="manual-text">Otomatik yönlendirme çalışmadı mı?</p>
+                <a href="#" id="store-button" class="store-button">
+                    <span id="button-icon" class="button-icon">📱</span>
+                    <span id="button-text">Mağazaya Git</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="redirect.js"></script>
+</body>
+
+</html>
